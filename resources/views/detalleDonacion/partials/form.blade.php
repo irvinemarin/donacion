@@ -5,7 +5,7 @@
 
 
     <div class="input-field col s12 m6 l4">
-        {!!Form::number('abono',null,['class'=>'validate','placeholder'=>'Ingrese la cantidad a abonar']) !!}
+        {!!Form::number('abono',null,['class'=>'validate','placeholder'=>'Ingrese la cantidad a abonar','step'=>'any']) !!}
         <label for="abono">
             Cantidad de Abono:
         </label>

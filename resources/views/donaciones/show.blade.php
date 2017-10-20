@@ -29,6 +29,7 @@
 
     </div>
     <div class="col s12 m12 l3">
+
         @include('donantes.partials.infoDonante')
     </div>
     <div class="col s12 m12 l9 ">

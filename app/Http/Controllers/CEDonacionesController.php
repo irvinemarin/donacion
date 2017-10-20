@@ -49,7 +49,6 @@ class CEDonacionesController extends Controller
         $this->validate($request, [
             'cantidad' => 'required',
             'nroCuota' => 'required',
-            'abono' => 'required',
             'frecuencia' => 'required',
             'fechain' => 'required',
             'fechaFinal' => 'required',
@@ -69,7 +68,8 @@ class CEDonacionesController extends Controller
         $donacion->codDonacion = $año . $request->nroCuota . $idSig;
         $donacion->cantidad = $request->cantidad;
         $donacion->nroCuota = $request->nroCuota;
-        $donacion->abono = $request->abono;
+        $donacion->abono = 0;
+        $donacion->restante = $request->cantidad;
         $donacion->frecuencia = $request->frecuencia;
         $donacion->fechain = $request->fechain;
         $donacion->fechaFinal = $request->fechaFinal;
@@ -157,7 +157,7 @@ class CEDonacionesController extends Controller
         $donacion = CE_Donaciones::find($idDonacion);
         $donante1 = CE_Donantes::find($donacion->idDonante);
 
-        $ListaDetalleDonacion = CE_DetalleDonacion::where('idDonacion', '=', $idDonacion)->orderBy('id', 'ASC')->paginate();
+        $ListaDetalleDonacion = CE_DetalleDonacion::where('idDonacion', '=', $idDonacion)->orderBy('id', 'ASC')->paginate(50);
 //        dd("tamaño : " . count($ListaDetalleDonacion));
 //        if (sizeof($ListaDetalleDonacion) > 0) {
 

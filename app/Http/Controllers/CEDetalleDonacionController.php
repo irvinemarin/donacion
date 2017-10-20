@@ -67,7 +67,10 @@ class CEDetalleDonacionController extends Controller
         }
         $DetalleDonacion->idDonacion = $request->idDonacion;
         $DetalleDonacion->save();
+
+
         $nuevoAbono = 0;
+
         $AbonosPromesa = CE_DetalleDonacion::all()->where('idDonacion', '=', $DetalleDonacion->idDonacion);
 
         foreach ($AbonosPromesa as $abonoFila) {
@@ -76,6 +79,8 @@ class CEDetalleDonacionController extends Controller
 
         $Donacion = CE_Donaciones::find($DetalleDonacion->idDonacion);
         $Donacion->abono = $nuevoAbono;
+        $Donacion->restante =$Donacion->cantidad - $nuevoAbono;
+
         $Donacion->save();
         return redirect()->route('donaciones.show', $request->idDonacion);
     }
@@ -121,6 +126,7 @@ class CEDetalleDonacionController extends Controller
 
         $Donacion = CE_Donaciones::find($DetalleDonacion->idDonacion);
         $Donacion->abono = $nuevoAbono;
+        $Donacion->restante =$Donacion->cantidad - $nuevoAbono;
         $Donacion->save();
 
         return redirect()->route('donaciones.show', $request->idDonacion);
@@ -131,7 +137,7 @@ class CEDetalleDonacionController extends Controller
         $donacion = CE_Donaciones::find($idDonacion);
         $donante = CE_Donaciones::find($donacion->idDonante);
         $camposMisioneros = CE_CampoMisionero::orderBy('descripcion', 'ASC')->get();
-        $ListaDetalleDonacion = CE_DetalleDonacion::find('idDonacion', '=', $idDonacion)->orderBy('id', 'ASC')->paginate();
+        $ListaDetalleDonacion = CE_DetalleDonacion::find('idDonacion', '=', $idDonacion)->orderBy('id', 'ASC')->paginate(50);
         return view('detalledonacion.index', compact('donacion', 'ListaDetalleDonacion', 'camposMisioneros', 'Estados', 'donante'));
     }
 }

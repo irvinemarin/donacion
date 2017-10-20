@@ -490,7 +490,7 @@
 		}
 	}
 
-	#header {
+	#header2 {
 		-moz-animation: header 1s 2.25s forwards;
 		-webkit-animation: header 1s 2.25s forwards;
 		-ms-animation: header 1s 2.25s forwards;
@@ -513,24 +513,24 @@
 		width: 90%;
 	}
 
-		#header h1 {
+		#header2 h1 {
 			font-size: 4.35em;
 			font-weight: 900;
 			letter-spacing: -0.035em;
 			line-height: 1em;
 		}
 
-		#header p {
+		#header2 p {
 			font-size: 1.25em;
 			margin: 0.75em 0 0.25em 0;
 			opacity: 0.75;
 		}
 
-		#header nav {
+		#header2 nav {
 			margin: 1.5em 0 0 0;
 		}
 
-			#header nav li {
+			#header2 nav li {
 				-moz-animation: nav-icons 0.5s ease-in-out forwards;
 				-webkit-animation: nav-icons 0.5s ease-in-out forwards;
 				-ms-animation: nav-icons 0.5s ease-in-out forwards;
@@ -552,84 +552,84 @@
 				width: 5.35em;
 			}
 
-				#header nav li:nth-child(1) {
+				#header2 nav li:nth-child(1) {
 					-moz-animation-delay: 2.5s;
 					-webkit-animation-delay: 2.5s;
 					-ms-animation-delay: 2.5s;
 					animation-delay: 2.5s;
 				}
 
-				#header nav li:nth-child(2) {
+				#header2 nav li:nth-child(2) {
 					-moz-animation-delay: 2.75s;
 					-webkit-animation-delay: 2.75s;
 					-ms-animation-delay: 2.75s;
 					animation-delay: 2.75s;
 				}
 
-				#header nav li:nth-child(3) {
+				#header2 nav li:nth-child(3) {
 					-moz-animation-delay: 3s;
 					-webkit-animation-delay: 3s;
 					-ms-animation-delay: 3s;
 					animation-delay: 3s;
 				}
 
-				#header nav li:nth-child(4) {
+				#header2 nav li:nth-child(4) {
 					-moz-animation-delay: 3.25s;
 					-webkit-animation-delay: 3.25s;
 					-ms-animation-delay: 3.25s;
 					animation-delay: 3.25s;
 				}
 
-				#header nav li:nth-child(5) {
+				#header2 nav li:nth-child(5) {
 					-moz-animation-delay: 3.5s;
 					-webkit-animation-delay: 3.5s;
 					-ms-animation-delay: 3.5s;
 					animation-delay: 3.5s;
 				}
 
-				#header nav li:nth-child(6) {
+				#header2 nav li:nth-child(6) {
 					-moz-animation-delay: 3.75s;
 					-webkit-animation-delay: 3.75s;
 					-ms-animation-delay: 3.75s;
 					animation-delay: 3.75s;
 				}
 
-				#header nav li:nth-child(7) {
+				#header2 nav li:nth-child(7) {
 					-moz-animation-delay: 4s;
 					-webkit-animation-delay: 4s;
 					-ms-animation-delay: 4s;
 					animation-delay: 4s;
 				}
 
-				#header nav li:nth-child(8) {
+				#header2 nav li:nth-child(8) {
 					-moz-animation-delay: 4.25s;
 					-webkit-animation-delay: 4.25s;
 					-ms-animation-delay: 4.25s;
 					animation-delay: 4.25s;
 				}
 
-				#header nav li:nth-child(9) {
+				#header2 nav li:nth-child(9) {
 					-moz-animation-delay: 4.5s;
 					-webkit-animation-delay: 4.5s;
 					-ms-animation-delay: 4.5s;
 					animation-delay: 4.5s;
 				}
 
-				#header nav li:nth-child(10) {
+				#header2 nav li:nth-child(10) {
 					-moz-animation-delay: 4.75s;
 					-webkit-animation-delay: 4.75s;
 					-ms-animation-delay: 4.75s;
 					animation-delay: 4.75s;
 				}
 
-			#header nav a {
+			#header2 nav a {
 				-webkit-tap-highlight-color: transparent;
 				-webkit-touch-callout: none;
 				border: 0;
 				display: inline-block;
 			}
 
-				#header nav a:before {
+				#header2 nav a:before {
 					-moz-transition: all 0.2s ease-in-out;
 					-webkit-transition: all 0.2s ease-in-out;
 					-ms-transition: all 0.2s ease-in-out;
@@ -646,26 +646,26 @@
 					width: 2.5em;
 				}
 
-				#header nav a:hover {
+				#header2 nav a:hover {
 					font-size: 1.1em;
 				}
 
-					#header nav a:hover:before {
+					#header2 nav a:hover:before {
 						background-color: rgba(255, 255, 255, 0.175);
 						color: #fff;
 					}
 
-				#header nav a:active {
+				#header2 nav a:active {
 					font-size: 0.95em;
 					background: none;
 				}
 
-					#header nav a:active:before {
+					#header2 nav a:active:before {
 						background-color: rgba(255, 255, 255, 0.35);
 						color: #fff;
 					}
 
-				#header nav a span {
+				#header2 nav a span {
 					display: none;
 				}
 
@@ -938,23 +938,23 @@
 
 	/* Header */
 
-		#header h1 {
+		#header2 h1 {
 			font-size: 2.5em;
 		}
 
-		#header p {
+		#header2 p {
 			font-size: 1em;
 		}
 
-		#header nav {
+		#header2 nav {
 			font-size: 1em;
 		}
 
-			#header nav a:hover {
+			#header2 nav a:hover {
 				font-size: 1em;
 			}
 
-			#header nav a:active {
+			#header2 nav a:active {
 				font-size: 1em;
 			} }
 
@@ -1036,6 +1036,6 @@
 
 	/* Header */
 
-		#header nav {
+		#header2 nav {
 			padding: 0 1em;
 		} }

@@ -9,7 +9,7 @@ class CECampoMisioneroController extends Controller
 {
     public function index()
     {
-        $ListaCamposMis = \App\CE_CampoMisionero::orderBy('nombre', 'ASC')->paginate(10);
+        $ListaCamposMis = \App\CE_CampoMisionero::orderBy('nombre', 'ASC')->paginate(20);
 
 
         return view('campos.index', compact('ListaCamposMis'));

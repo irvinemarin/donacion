@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,6 +25,14 @@
 </head>
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
 
+{{--<div class="row">--}}
+{{--<div class="col s4 m4">--}}
+{{--{!! Form::open( ['route'=>'excel.import.donante','method'=>'POST']) !!}--}}
+{{--<input id="fileinput" type="file" name="excel" accept=".xls,.xlsx">--}}
+{{--{!! Form::submit('enviar',['class'=>'btn btn-small waves-effect waves-light right']) !!}--}}
+{{--{!! Form::close() !!}--}}
+{{--</div>--}}
+{{--</div>--}}
 
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
@@ -36,47 +45,35 @@
                 Finalizadas</a>
             <a href="{{route('camposMisioneros.index')}}" class="mdl-layout__tab">Campos Misioneros</a>
             <a href="{{route('proyectos.index')}}" class="mdl-layout__tab">Proyectos</a>
+            <a href="{{route('usuarios.index')}}" class="mdl-layout__tab">Usuarios</a>
+
         </div>
     </header>
-    <main class="mdl-layout__content">
+    <main class="">
 
         <div class="container">
             <div class="row">
                 <div class="col s12 m12 center">
-
-
                     @yield('content')
-
-
                 </div>
             </div>
         </div>
 
 
     </main>
-    <footer class="page-footer teal">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12 ">
-                    {{--<h5 class="white-text">--}}
-                    {{--MHCS Consulting--}}
-                    {{--</h5>--}}
 
-                </div>
-
-
-            </div>
-        </div>
-    </footer>
 </div>
 <!-- Footer -->
 
 </footer>
 
+
 {!!Html::script('assets/js/jquery.js')!!}
+{!!Html::script('assets/js/moment.js')!!}
 {!!Html::script('assets/js/materialize.js')!!}
 {!!Html::script('assets/js/init.min.js')!!}
 {!!Html::script('assets/js/myscript.js')!!}
 {!!Html::script('assets/js/material.min.js')!!}
+@yield('script')
 </body>
 </html>

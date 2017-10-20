@@ -1,9 +1,9 @@
-@extends('layout-proyectos')
+@extends('layout-users')
 @section('content')
     <div class="fixed-action-btn horizontal click-to-toggle">
 
-        <a class="btn-floating btn-large mdl-color--primary tooltipped" href="{{ route('proyectos.create') }}"
-           data-position="top" data-delay="50" data-tooltip="Agregar Proyecto">
+        <a class="btn-floating btn-large mdl-color--primary tooltipped" href="{{ route('usuarios.create') }}"
+           data-position="top" data-delay="50" data-tooltip="Nuevo Usuario">
             <i class="material-icons">add</i>
         </a>
 
@@ -11,7 +11,7 @@
     <div class="card col s12 m12 l8 offset-l2">
         <div class="row">
             <h4 class="col s12 center">
-                Lista de Proyectos
+                Lista de Usuarios
             </h4>
 
         </div>
@@ -20,52 +20,36 @@
                 <table class="striped responsive-table">
                     <thead>
                     <tr>
-                        <th>Nro</th>
-                        <th>Nombre</th>
-                        <th>Estado</th>
+                        <th>id</th>
+                        <th>username</th>
+                        <th>password</th>
+                        <th>estado</th>
                         <th class="right">Accion</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <?php
-                    $nroOrden = 0;
-                    ?>
-                    @foreach($listProyectos as $proyecto)
-                        <?php
-                        $nroOrden++;
-                        ?>
+                    @foreach($usuarios as $userFila)
                         <tr>
-                            <td>{{ $proyecto -> id }}</td>
-                            <td>{{ $proyecto -> nombre }}</td>
-
-
-                            <td>
-                                @foreach($Estados as $estado)
-                                    @if($estado->id== $proyecto -> idEstado)
-                                        {{ $estado -> nombre }}
-
-                                    @endif
-                                @endforeach
-                            </td>
-
-
+                            <td>{{$userFila->id}}</td>
+                            <td>{{$userFila->userName}}</td>
+                            <td>{{$userFila->userPassword}}</td>
+                            <td>{{$userFila->estado}}</td>
                             <td>
                                 <a class="waves-effect waves-light tooltipped right"
                                    data-position="right" data-delay="50" data-tooltip="Editar"
-                                   href="{{route('proyectos.edit',$proyecto->id)}}">
+                                   href="{{route('usuarios.edit',$userFila->id)}}">
                                     <i class="material-icons right">
                                         mode_edit
                                     </i>
                                 </a>
-
                             </td>
                         </tr>
                     @endforeach
+
                     </tbody>
                 </table>
             </div>
 
-            {!!$listProyectos ->render()!!}
 
         </div>
 

@@ -14,7 +14,7 @@ class CreateCEDonantesTable extends Migration
     public function up()
     {
         Schema::create('c_e__donantes', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->string('codDonante');
             $table->string('nombres');
             $table->string('apellidoPaterno');
@@ -25,9 +25,11 @@ class CreateCEDonantesTable extends Migration
             $table->string('direccion');
             $table->string('fechaNac');
             $table->string('fechaReg');
-            $table->integer('idEstado');
             $table->string('cargo');
-            $table->integer('campoMisiId');
+            $table->integer('campoMisiId')->unsigned();
+            $table->foreign('campoMisiId')->references('id')->on('c_e__campo_misioneros');
+            $table->integer('idEstado')->unsigned();
+            $table->foreign('idEstado')->references('id')->on('c_e_estados');
             $table->timestamps();
         });
     }

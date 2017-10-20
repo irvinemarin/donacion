@@ -5,7 +5,16 @@
             <div id="" class="card-content">
 
                 <div class="row center">
-                    <H4 class="col s12 ">Editando Proyecto</H4>
+                    <a class="btn-floating btn-small waves-effect waves-light blue tooltipped right"
+                       href="{{ route('proyectos.index')}}" data-position="top" data-delay="50"
+                       data-tooltip="Cancelar">
+                        <i class="material-icons">
+                            replay
+                        </i>
+                    </a>
+
+                    <H4>Editando Proyecto</H4>
+
                 </div>
 
                 <div class="row center">

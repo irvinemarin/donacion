@@ -21,13 +21,10 @@
                 <table class="striped responsive-table">
                     <thead>
                     <tr>
-
-
                         <th>Siglas</th>
                         <th>Descripción</th>
                         <th>Tipo Entidad</th>
                         <th>Acción</th>
-
                     </tr>
                     </thead>
                     <tbody>
@@ -44,7 +41,7 @@
 
 
                             <td>
-                                <a class="btn-floating btn-small waves-effect waves-light blue "
+                                <a class="waves-effect waves-light "
                                    href="{{route('camposMisioneros.edit',$camposMisionero->id)}}">
                                     <i class="material-icons right">
                                         mode_edit

@@ -35,9 +35,11 @@
                 Finalizadas</a>
             <a href="{{route('camposMisioneros.index')}}" class="mdl-layout__tab is-active ">Campos Misioneros</a>
             <a href="{{route('proyectos.index')}}" class="mdl-layout__tab">Proyectos</a>
+            <a href="{{route('usuarios.index')}}" class="mdl-layout__tab">Usuarios</a>
+
         </div>
     </header>
-    <main class="mdl-layout__content">
+    <main class="">
 
         <div class="container">
             <div class="row">
@@ -49,19 +51,7 @@
 
 
     </main>
-    <footer class="page-footer teal">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12 ">
-                    <h5 class="white-text">
-                    MHCS Consulting
-                    </h5>
-                </div>
-
-
-            </div>
-        </div>
-    </footer>
+    
 </div>
 <!-- Footer -->
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCEProyectosTable extends Migration
+class CreateCECampoMisionerosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateCEProyectosTable extends Migration
      */
     public function up()
     {
-        Schema::create('c_e__proyectos', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('c_e__campo_misioneros', function (Blueprint $table) {
+            $table->increments('id')->unsigned();
             $table->string('nombre');
             $table->string('descripcion');
-            $table->integer('idEstado');
+            $table->string('lugarSuperior');
+            $table->integer('idEstado')->unsigned();
+            $table->foreign('idEstado')->references('id')->on('c_e_estados')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateCEProyectosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('c_e__proyectos');
+        Schema::dropIfExists('c_e__campo_misioneros');
     }
 }

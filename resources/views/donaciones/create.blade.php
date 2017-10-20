@@ -9,7 +9,7 @@
                     replay
                 </i>
             </a>
-            <h5 class="center">Agregando Donación  para </h5>
+            <h5 class="center">Agregando Donación para </h5>
             <h5>{{strtoupper( $donante -> apellidoPaterno) }} {{strtoupper( $donante -> apellidoMaterno )}}
                 , {{ ucwords($donante -> nombres )}} </h5>
             @if (count($errors) > 0)
@@ -39,42 +39,46 @@
                     {!!Form::number('cantidad',null,['class'=>'validate']) !!}
                     <label for="cantidad">
                         Cantidad a Donar :
+                        <span class="red-text">*</span>
                     </label>
                 </div>
                 <div class="input-field col s12 m6 l4">
-                    {!!Form::text('nroCuota',null,['class'=>'validate']) !!}
+                    {!!Form::text('nroCuota',null,['class'=>'validate','id'=>'nroCuota' ]) !!}
                     <label for="nroCuota">
                         Nro Cuotas :
+                        <span class="red-text">*</span>
                     </label>
                 </div>
+                {{--<div class="input-field col s12 m6 l4">--}}
+                    {!!Form::hidden('abono',null,['class'=>'validate']) !!}
+                {{--<label for="abono">--}}
+                {{--abono :--}}
+                {{--</label>--}}
+                {{--</div>--}}
                 <div class="input-field col s12 m6 l4">
-                    {!!Form::text('abono',null,['class'=>'validate']) !!}
-                    <label for="abono">
-                        abono :
-                    </label>
-                </div>
-                <div class="input-field col s12 m6 l4">
-                    {!!Form::text('frecuencia',null,['class'=>'validate']) !!}
+                    {!!Form::text('frecuencia',null,['class'=>'validate','id'=>'frecuencia']) !!}
                     <label for="frecuencia">
                         Frecuencia :
+                        <span class="red-text">*</span>
                     </label>
                 </div>
-                <div class="input-field col s12 m4 l4">
+                <div class="input-field col s12 m6 ">
                     <i class="material-icons prefix">
                         today
                     </i>
-                    {!!Form::text('fechain',null,['class'=>'datepicker']) !!}
+                    {!!Form::text('fechain',null,['class'=>'datepicker','id'=>'fechain']) !!}
 
                     <label for="fechain">
                         Fecha Inicio:
+                        <span class="red-text">*</span>
                     </label>
 
                 </div>
-                <div class="input-field col s12 m4 l4">
+                <div class="input-field col s12 m6">
                     <i class="material-icons prefix">
                         today
                     </i>
-                    {!!Form::text('fechaFinal',null,['class'=>'datepicker']) !!}
+                    {!!Form::text('fechaFinal',null,['class'=>'']) !!}
 
                     <label for="fechaFinal">
                         Fecha Final:
@@ -83,23 +87,26 @@
                 </div>
 
 
-                <div class="input-field col s12 m4 l4">
+                <div class="input-field col s12 m12">
 
                     {!!Form::text('modalidad',null,['class'=>'validate']) !!}
                     <label>Modalidad</label>
+                    <span class="red-text">*</span>
                 </div>
 
 
-                <div class="input-field col s12">
+                <div class="input-field col s12 m6">
                     <select name="idProyecto">
 
                         @foreach($Proyectos as $proyectoFila)
                             <option value="{{$proyectoFila->id}}">{{$proyectoFila->nombre}}</option>
                         @endforeach
                     </select>
-                    <label>Proyecto :</label>
+                    <label>Proyecto :
+                        <span class="red-text">*</span>
+                    </label>
                 </div>
-                <div class="input-field col s12">
+                <div class="input-field col s12 m6">
                     <select name="idEstado">
 
                         @foreach($Estados as $estado)
@@ -116,4 +123,38 @@
         </div>
     </div>
 
+
+
+@endsection
+@section("script")
+    <script>
+
+
+        $("#nroCuota").on('keyup', function () {
+            var frecuencia = $("#frecuencia").val()
+            var nroCuota = $("#nroCuota").val()
+            var fecha = $('[name="fechain"]').val()
+            var mobjdate = moment(fecha, 'DD-MM-YYYY');
+
+            mobjdate.add(nroCuota, 'months');
+
+            $('[name="fechaFinal"]').val(mobjdate.format('DD-MM-YYYY'))
+            $('[for="fechaFinal"]').addClass('active');
+
+        });
+        $("#fechain").on('change', function () {
+            var frecuencia = $("#frecuencia").val()
+            var nroCuota = $("#nroCuota").val()
+            var fecha = $('[name="fechain"]').val()
+            var mobjdate = moment(fecha, 'DD-MM-YYYY');
+
+            mobjdate.add(nroCuota, 'months');
+
+            $('[name="fechaFinal"]').val(mobjdate.format('DD-MM-YYYY'))
+            $('[for="fechaFinal"]').addClass('active');
+
+        });
+
+
+    </script>
 @endsection

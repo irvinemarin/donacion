@@ -1,7 +1,7 @@
-@extends('layout')
+@extends('layout2')
 @section('content')
     <div class="">
-        <div class="col s12">
+        <div class="col s6 offset-s3">
             <div class="card">
                 <div id="" class="card-content">
 
@@ -13,7 +13,7 @@
                                 replay
                             </i>
                         </a>
-                        <H4 class="col s12 ">Nuevo Donante</H4>
+                        <H4 class="col s12 ">Editando Donante</H4>
                         @if (count($errors) > 0)
                             <div id="card-alert" class="card red lighten-5">
                                 <a class="btn-flat close red-text right" data-dismiss="alert"

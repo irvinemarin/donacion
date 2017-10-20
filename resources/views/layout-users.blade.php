@@ -13,7 +13,6 @@
     <link rel="shortcut icon" href="images/favicon.png">
 
     {!!Html::style('fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en')!!}
-
     {!!Html::style('assets/css/material.min.css')!!}
     {!!Html::style('assets/css/styles.css')!!}
     {!!Html::style('//fonts.googleapis.com/icon?family=Material+Icons')!!}
@@ -34,10 +33,9 @@
             <a href="{{route('donantes.index')}}" class="mdl-layout__tab ">Donantes</a>
             <a href="{{route('donaciones.finalizadas.index')}}" class="mdl-layout__tab">Donaciones
                 Finalizadas</a>
-            <a href="{{route('camposMisioneros.index')}}" class="mdl-layout__tab  ">Campos Misioneros</a>
-            <a href="{{route('proyectos.index')}}" class="mdl-layout__tab is-active">Proyectos</a>
-            <a href="{{route('usuarios.index')}}" class="mdl-layout__tab">Usuarios</a>
-
+            <a href="{{route('camposMisioneros.index')}}" class="mdl-layout__tab ">Campos Misioneros</a>
+            <a href="{{route('proyectos.index')}}" class="mdl-layout__tab">Proyectos</a>
+            <a href="{{route('usuarios.index')}}" class="mdl-layout__tab is-active">Usuarios</a>
         </div>
     </header>
     <main class="">
@@ -45,18 +43,14 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m12 center">
-
-
                     @yield('content')
-
-
                 </div>
             </div>
         </div>
 
 
     </main>
-   
+
 </div>
 <!-- Footer -->
 

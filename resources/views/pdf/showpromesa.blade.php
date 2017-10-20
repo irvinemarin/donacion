@@ -108,12 +108,8 @@
                                             {{ $fila->fecha->format('F Y ')   }}
                                         </td>
                                         <td>
-
-                                            @foreach($ListaCamposMisioneros as $campofila)
-                                                @if ($campofila->id== $fila -> campoMisioneroId)
-                                                    {{$campofila->descripcion}}
-                                                @endif
-                                            @endforeach
+                                            @php($campo=\App\CE_CampoMisionero::find($fila->campoMisioneroId))
+                                            {{$campo->descripcion}}
 
                                         </td>
 

@@ -5,7 +5,7 @@
     <title>Example 2</title>
 
     {!! Html::style('assets/css/materialize.css') !!}
-    {!!Html::style('//fonts.googleapis.com/icon?family=Material+Icons')!!}
+    {!! Html::style('//fonts.googleapis.com/icon?family=Material+Icons')!!}
     {!! Html::style('assets/css/stylepdf.css') !!}
 </head>
 <body class=" " style="background-color: #a5b4c0; height: 29.7cm;">
@@ -54,9 +54,9 @@
                         <div><span>EMAIL</span> {{ $donante1->email }}</div>
                         <div><span>F. NACIMIENTO</span>{{ $donante1->fechaNac }}</div>
                         <div><span>CAMPO MISIONERO</span>
-
-
-                            {{$CampoMisionero->nombre }}</div>
+                            @php($campo=\App\CE_CampoMisionero::find($donante1->campoMisiId))
+                            {{$campo->descripcion}}
+                        </div>
                         <div><span>CARGO</span> {{ $donante1->cargo }}</div>
                         <div><span>ESTADO</span> {{ $Estado->nombre }}</div>
                     </div>
@@ -92,8 +92,6 @@
                                     <th>Abono</th>
                                     <th>F. Inicio</th>
                                     <th>F. Final</th>
-
-
                                     <th>Proyecto</th>
                                     <th>Estado</th>
 
@@ -113,26 +111,15 @@
 
 
                                         <td>
-                                            @foreach($ListaProyectos as $filaProyecto)
-
-
-                                                @if($filaProyecto->id==$fila -> idProyecto)
-                                                    {{$filaProyecto->nombre  }}
-
-                                                @endif
-                                            @endforeach
+                                            @php($proyecto=\App\CE_Proyecto::find($fila->idProyecto))
+                                            {{$proyecto->descripcion}}
                                         </td>
-                                        EstadoList
+
                                         <td>
-                                            @foreach($EstadoList as $filaEstado)
+                                            @php($estado=\App\CEEstados::find($fila->idEstado))
+                                            {{$estado->nombre}}
 
 
-                                                @if($filaEstado->id==$fila -> idEstado)
-                                                    {{$filaEstado->nombre  }}
-
-                                                @endif
-                                            @endforeach
-                                            {{ $fila -> estado }}
                                         </td>
 
 
@@ -160,6 +147,7 @@
             </div>
         </div>
     </div>
+</div>
 
 </body>
 </html>

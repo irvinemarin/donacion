@@ -16,13 +16,6 @@
                     <i class="material-icons">library_books</i>
                 </a>
             </li>
-            {{--<li>--}}
-            {{--<a class="btn-floating green darken-1 tooltipped" data-position="left" data-delay="50"--}}
-            {{--data-tooltip="Exportar Donaciones a Excel" href="{{route('excel.Donaciones')}}">--}}
-            {{--<i class="material-icons">library_books</i>--}}
-            {{--</a>--}}
-            {{--</li>--}}
-
         </ul>
 
     </div>

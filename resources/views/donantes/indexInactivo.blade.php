@@ -40,44 +40,8 @@
 
         <div class="card col s12 m12 l9 ">
             <div class="card-content">
-                <h4 class="mdl-cell mdl-cell--12-col">Donantes</h4>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Apellidos y Nombres</th>
-                        <th>Campo Misionero</th>
-                        <th>Código Donante</th>
-                        <th class="right">Acción</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    @foreach($listDonantes as $donantefila)
-                        <tr>
-                            <td>
-                                {{strtoupper( $donantefila -> apellidoPaterno) }} {{strtoupper( $donantefila -> apellidoMaterno )}} {{ ucwords($donantefila -> nombres )}}
-                            </td>
-
-                            <td> @foreach($camposMisioneros as $campofila)
-                                    @if ($campofila->id == $donantefila->campoMisiId)
-                                        {{$campofila->nombre}}
-                                    @endif
-                                @endforeach
-                            </td>
-                            <td>{{ $donantefila -> codDonante }}</td>
-                            <td>
-                                <a style="margin-left: 15px;"
-                                   class="btn-floating  waves-effect waves-light blue tooltipped secondary-content"
-                                   href="{{ route('donantes.show', $donantefila->id) }}" data-position="top"
-                                   data-delay="50" data-tooltip="ver">
-                                    <i class="tiny material-icons center">visibility</i>
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-                {!!$listDonantes ->render()!!}
+                <h4 class="mdl-cell mdl-cell--12-col">Donantes Inactivos</h4>
+                @include('donantes.partials.listaDonantes')
 
             </div>
 

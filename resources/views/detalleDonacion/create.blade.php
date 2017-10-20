@@ -29,7 +29,8 @@
                         <div class="row ">
                             {!!Form::hidden('id',null,['class'=>'validate','placeholder'=>'id']) !!}
                             <div class="input-field col s12 ">
-                                {!!Form::number('abono',null,['class'=>'validate','placeholder'=>'Ingrese la cantidad de Deposito']) !!}
+                                {!!Form::number('abono',null,['class'=>'validate','placeholder'=>'Ingrese la cantidad de Deposito','step'=>'any']) !!}
+{{--                                {!!Form::number('abono',null,['class'=>'validate','placeholder'=>'Ingrese la cantidad de Deposito']) !!}--}}
                                 <label for="abono">
                                     Cantidad de Abono:
                                 </label>

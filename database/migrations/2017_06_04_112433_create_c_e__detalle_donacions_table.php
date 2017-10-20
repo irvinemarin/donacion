@@ -14,12 +14,14 @@ class CreateCEDetalleDonacionsTable extends Migration
     public function up()
     {
         Schema::create('c_e__detalle_donacions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->double('abono',15,2);
+            $table->increments('id')->unsigned();
+            $table->double('abono', 15, 2);
             $table->string('fecha');
-            $table->integer('campoMisioneroId');
             $table->string('nroVaucher');
-            $table->integer('idDonacion');
+            $table->integer('campoMisioneroId')->unsigned();
+            $table->foreign('campoMisioneroId')->references('id')->on('c_e__campo_misioneros')->onDelete('cascade');
+            $table->integer('idDonacion')->unsigned();
+            $table->foreign('idDonacion')->references('id')->on('c_e__donaciones')->onDelete('cascade');
             $table->timestamps();
         });
     }

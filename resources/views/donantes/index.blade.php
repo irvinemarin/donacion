@@ -14,12 +14,12 @@
                     <i class="material-icons">add</i>
                 </a>
             </li>
-            {{--<li>--}}
-            {{--<a class="btn-floating green darken-1 tooltipped" data-position="left" data-delay="50"--}}
-            {{--data-tooltip="Exportar Donates a Excel" href="{{route('excel.donantes')}}">--}}
-            {{--<i class="material-icons">library_books</i>--}}
-            {{--</a>--}}
-            {{--</li>--}}
+            <li>
+                <a class="btn-floating green darken-1 tooltipped" data-position="left" data-delay="50"
+                   data-tooltip="Exportar Base de datos a Excel" href="{{route('excel.donantes')}}">
+                    <i class="material-icons">library_books</i>
+                </a>
+            </li>
         </ul>
 
     </div>
@@ -30,19 +30,13 @@
             <ul class=" collection with-header">
                 <li class="collection-item ">
                     <div class=" nav-wrapper ">
-
                         {!! Form::open(['route' => 'donantes.index', 'method' => 'GET']) !!}
-
                         <div class="input-field">
-                            {{--<input id="search" placeholder="Buscar Donante" type="search" required>--}}
                             {!!Form::search('nombres',null,['class'=>'validate','placeholder'=>'Buscar Donante']) !!}
                             <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                             <i class="material-icons">close</i>
                         </div>
-
                         {!! Form::close() !!}
-
-
                     </div>
                 </li>
 
@@ -56,49 +50,152 @@
                 </li>
 
             </ul>
+            <div class="card ">
+                <div class="card-content ">
+                    <h6>Importar donantes desde un archivo Excel</h6>
+
+                    {!! Form::open( ['route'=>'excel.import.donante','method'=>'POST']) !!}
+                    <div class="row" style="    margin-bottom: 0px;     margin-left: 0px;     margin-right: 0px; ">
+                        <div class="col s12 m12">
+                            <div class="file-field input-field" style="    margin-top: 0px;">
+                                <div class="row"
+                                     style="    margin-left: 0px;     margin-right: 0px;     margin-bottom: 0px;">
+                                    <div class="col s12">
+                                        <span
+                                                style="width: 100%;
+                                                background: #00b8d4;
+                                                padding: 5px;
+                                                color: #ffffff;
+                                                border-radius: 3px;">
+                                            Seleccionar archivo
+                                        </span>
+                                        <input
+                                                id="fileinput"
+                                                type="file"
+                                                name="excel"
+                                                class=""
+                                                accept=".xls,.xlsx">
+                                    </div>
+                                    <div class="col s6 m12">
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" style="width: 100%; "/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col s12 m12">
+                            {!! Form::submit('Importar Donantes',['class'=>'btn blue waves-effect waves-light']) !!}
+                        </div>
+                    </div>
+                    @if($mensaje!="")
+                        <h6 class="red-text">{{$mensaje}} </h6>
+                    @endif
+
+                    {!! Form::close() !!}
+                </div>
+            </div>
+            <div class="card ">
+                <div class="card-content ">
+                    <h6>Importar donaciones para este donante</h6>
+
+                    {!! Form::open( ['route'=>['excel.import.donacion', 0],'method'=>'POST']) !!}
+                    <div class="row" style="    margin-bottom: 0px;     margin-left: 0px;     margin-right: 0px; ">
+                        <div class="col s12 m12">
+                            <div class="file-field input-field" style="    margin-top: 0px;">
+                                <div class="row"
+                                     style="    margin-left: 0px;     margin-right: 0px;     margin-bottom: 0px;">
+                                    <div class="col s12">
+                                        <span
+                                                style="width: 100%;
+                                                background: #00b8d4;
+                                                padding: 5px;
+                                                color: #ffffff;
+                                                border-radius: 3px;">
+                                            Seleccionar archivo
+                                        </span>
+                                        <input
+                                                id="fileinput"
+                                                type="file"
+                                                name="excel"
+                                                class=""
+                                                accept=".xls,.xlsx">
+
+                                        {!!Form::hidden('idDonanteExcel',0,['class'=>'validate','placeholder'=>'IdDonante']) !!}
+                                    </div>
+                                    <div class="col s6 m12">
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" style="width: 100%; "/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col s12 m12">
+                            {!! Form::submit('Importar Promesas',['class'=>'btn blue waves-effect waves-light']) !!}
+                        </div>
+                    </div>
+
+                    {!! Form::close() !!}
+                </div>
+            </div>
+            <div class="card ">
+                <div class="card-content ">
+                    <h6>Importar Cuotas para esta promesa</h6>
+                    {!! Form::open( ['route'=>['excel.import.detalle', 0],'method'=>'POST']) !!}
+                    <div class="row" style="    margin-bottom: 0px;     margin-left: 0px;     margin-right: 0px; ">
+                        <div class="col s12 m12">
+                            <div class="file-field input-field" style="    margin-top: 0px;">
+                                <div class="row"
+                                     style="    margin-left: 0px;     margin-right: 0px;     margin-bottom: 0px;">
+                                    <div class="col s12">
+                                        <span
+                                                style="width: 100%;
+                                                background: #00b8d4;
+                                                padding: 5px;
+                                                color: #ffffff;
+                                                border-radius: 3px;">
+                                            Seleccionar archivo
+                                        </span>
+                                        <input
+                                                id="fileinput"
+                                                type="file"
+                                                name="excel"
+                                                class=""
+                                                accept=".xls,.xlsx">
+
+                                        {!!Form::hidden('idDonacionExcel',0,['class'=>'validate','placeholder'=>'IdDonante']) !!}
+                                    </div>
+                                    <div class="col s6 m12">
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" style="width: 100%; "/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s12 m12">
+                            {!! Form::submit('Importar Coutas',['class'=>'btn blue waves-effect waves-light']) !!}
+                        </div>
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+
 
         </div>
 
+
         <div class="card col s12 m12 l9 ">
             <div class="card-content">
-                <h4 class="mdl-cell mdl-cell--12-col">Donantes</h4>
-                <table class="striped">
-                    <thead>
-                    <tr>
-                        <th>Apellidos y Nombres</th>
-                        <th>Campo Misionero</th>
-                        <th>Código Donante</th>
-                        <th class="right">Acción</th>
-                    </tr>
-                    </thead>
+                <h4>Donantes Activos</h4>
+                @include('donantes.partials.listaDonantes')
 
-                    <tbody>
-                    @foreach($listDonantes as $donantefila)
-                        <tr>
-                            <td>
-                                {{strtoupper( $donantefila -> apellidoPaterno) }} {{strtoupper( $donantefila -> apellidoMaterno )}} {{ ucwords($donantefila -> nombres )}}
-                            </td>
-
-                            <td> @foreach($camposMisioneros as $campofila)
-                                    @if ($campofila->id == $donantefila->campoMisiId)
-                                        {{$campofila->nombre}}
-                                    @endif
-                                @endforeach
-                            </td>
-                            <td>{{ $donantefila -> codDonante }}</td>
-                            <td>
-                                <a style="margin-left: 15px;"
-                                   class=" waves-effect waves-light  tooltipped right"
-                                   href="{{ route('donantes.show', $donantefila->id) }}" data-position="top"
-                                   data-delay="50" data-tooltip="ver">
-                                    <i class="material-icons center">visibility</i>
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-                {!!$listDonantes ->render()!!}
 
             </div>
 

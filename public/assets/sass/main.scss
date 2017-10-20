@@ -178,7 +178,7 @@
 		100%	{ @include vendor('transform', 'translate3d(0,0,0)'); opacity: 1; }
 	}
 
-	#header {
+	#header2 {
 		@include vendor('animation', 'header #{_duration(header)} #{$delay-header} forwards');
 		@include vendor('backface-visibility', 'hidden');
 		@include vendor('transform', 'translate3d(0,0,0)');
@@ -338,7 +338,7 @@
 
 		/* Header */
 
-			#header {
+			#header2 {
 				h1 {
 					font-size: 2.5em;
 				}
@@ -374,7 +374,7 @@
 
 		/* Header */
 
-			#header {
+			#header2 {
 				nav {
 					padding: 0 1em;
 				}

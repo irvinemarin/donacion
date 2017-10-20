@@ -3,10 +3,12 @@
         <table class="striped responsive-table">
             <thead>
             <tr>
-                <th>Codigo</th>
+                <th>Nro. Reg</th>
+                <th>Código</th>
                 <th>Cantidad</th>
                 <th>Cuotas</th>
                 <th>Abono</th>
+                <th>Restante</th>
                 <th>Frecuencia</th>
                 <th>F. Inicio</th>
                 <th>F. Final</th>
@@ -20,13 +22,15 @@
             @foreach($listaDonaciones as $fila)
                 <tr>
 
+                    <td>{{ $fila -> id }}</td>
                     <td>{{ $fila -> codDonacion }}</td>
                     <td>S/{{number_format($fila -> cantidad,2) }}</td>
                     <td>{{ $fila -> nroCuota }}</td>
                     <td>S/{{number_format($fila -> abono,2) }}</td>
+                    <td>S/{{number_format($fila -> restante,2) }}</td>
                     <td>{{ $fila -> frecuencia }}</td>
-                    <td>{{ $fila -> fechain }}</td>
-                    <td>{{ $fila -> fechaFinal }}</td>
+                    <td>{{substr($fila -> fechain, 0, 10)}}</td>
+                    <td>{{substr($fila -> fechaFinal, 0, 10)}}</td>
                     <td>{{ $fila -> modalidad }}</td>
 
                     <td>

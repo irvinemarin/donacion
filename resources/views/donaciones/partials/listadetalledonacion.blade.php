@@ -18,7 +18,7 @@
                 @php($Suma=$fila->abono+$Suma)
                 <tr>
 
-                    <td>{{ $fila -> fecha->format("F Y") }}</td>
+                    <td>{{ strtoupper($fila -> fecha->format("F Y")) }}</td>
                     <td>
                         @foreach($camposMisioneros as $canpoMisionero)
                             @if ($canpoMisionero->id== $fila -> campoMisioneroId)

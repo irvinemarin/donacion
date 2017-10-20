@@ -7,9 +7,10 @@
                      alt="" style="border-radius: 50%; height: 70px; margin: auto;"/>
             </div>
             <div class="col s1">
-                <a class="waves-effect waves-light  tooltipped  activator right" href="#" data-position="top"
-                   style="border-radius: 50%;" data-delay="50" data-tooltip="Modificar">
-                    <i class="material-icons black-text">
+                <a class="waves-effect waves-light tooltipped right"
+                   data-position="right" data-delay="50" data-tooltip="Editar"
+                   href="{{route('donantes.edit',$donante1->id)}}">
+                    <i class="material-icons right">
                         mode_edit
                     </i>
                 </a>
@@ -43,7 +44,7 @@
         <div class="row">
             <div class="col s6 ">
                 <label class="left" style="color:black; font-size: 12px; ">
-                    Dni :
+                    DNI :
                 </label>
             </div>
             <div class="col s6 ">
@@ -55,7 +56,7 @@
         <div class="row">
             <div class="col s6 ">
                 <label class="left" style="color:black; font-size: 12px; "><i class="Tiny material-icons">person_pin</i>
-                    direccion :
+                    Dirección :
                 </label>
             </div>
             <div class="col s6 ">
@@ -176,7 +177,7 @@
                 <label class="right">
                     @foreach($camposMisioneros as $campofila)
                         @if ($campofila->id == $donante1->campoMisiId)
-                            {{$campofila->nombre}}
+                            {{$campofila->descripcion}}
                         @endif
                     @endforeach
                 </label>
@@ -185,13 +186,13 @@
         </div>
 
     </div>
-    <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Editando Donante<i
-                            class="material-icons right">close</i></span>
-        {!! Form::model($donante1, ['route' => ['donantes.update', $donante1->id], 'method' => 'PUT']) !!}
+    {{--<div class="card-reveal">--}}
+                {{--<span class="card-title grey-text text-darken-4">Editando Donante<i--}}
+                            {{--class="material-icons right">close</i></span>--}}
+        {{--{!! Form::model($donante1, ['route' => ['donantes.update', $donante1->id], 'method' => 'PUT']) !!}--}}
 
-        @include('donantes.partials.form')
+        {{--@include('donantes.partials.form')--}}
 
-        {!! Form::close() !!}
-    </div>
+        {{--{!! Form::close() !!}--}}
+    {{--</div>--}}
 </div>

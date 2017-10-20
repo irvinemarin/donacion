@@ -5,14 +5,15 @@
             <div id="" class="card-content">
 
                 <div class="row center">
-                    <H4 class="col s12 ">Editando Campo Misionero</H4>
-                    <a class="btn-floating btn-small waves-effect waves-light blue tooltipped r"
+                    <a class="btn-floating btn-small waves-effect waves-light blue tooltipped right"
                        href="{{ route('camposMisioneros.index')}}" data-position="top" data-delay="50"
                        data-tooltip="Cancelar">
                         <i class="material-icons">
                             replay
                         </i>
                     </a>
+                    <H4>Editando Campo Misionero</H4>
+
                 </div>
 
                 <div class="row center">

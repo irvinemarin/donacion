@@ -6,10 +6,11 @@
         <i class="small material-icons prefix">
             account_circle
         </i>
-        {!!Form::text('nombres',null,['class'=>'validate','data-length'=>'50','maxlength'=>'50','id'=>'nombres']) !!}
+        {!!Form::text('nombres',null,['class'=>'validate','data-length'=>'50','maxlength'=>'50']) !!}
 
         <label for="nombres">
-            Nombres :
+            Nombres:
+            <span class="red-text">*</span>
         </label>
 
     </div>
@@ -17,7 +18,8 @@
         {!!Form::text('apellidoPaterno',null,['class'=>'validate ','data-length'=>'50','maxlength'=>'50']) !!}
 
         <label for="ape_paterno">
-            Apellido Paterno :
+            Apellido Paterno:
+            <span class="red-text">*</span>
         </label>
 
     </div>
@@ -25,12 +27,14 @@
         {!!Form::text('apellidoMaterno',null,['class'=>'validate','data-length'=>'50','maxlength'=>'50']) !!}
         <label for="ape_materno">
             Apellido Materno :
+            <span class="red-text">*</span>
         </label>
     </div>
     <div class="input-field col s12 m12">
         {!!Form::text('dni',null,['class'=>'validate','data-length'=>'15','maxlength'=>'15']) !!}
         <label for="icon_prefix">
             DNI:
+            <span class="red-text">*</span>
         </label>
 
     </div>
@@ -47,7 +51,7 @@
         <i class="small material-icons prefix">
             email
         </i>
-        {!!Form::email('email',null,['class'=>'validate']) !!}
+        {!!Form::text('email',null,['class'=>'validate']) !!}
         <label for="email">
             E-mail:
         </label>
@@ -58,19 +62,19 @@
         </i>
         {!!Form::text('direccion',null,['class'=>'validate']) !!}
         <label for="direccion">
-            Direccion:
+            Dirección:
         </label>
 
     </div>
     <?php
-    $hoy = date("Y-m-d H:i:s");
+    $hoy = date("d-m-Y");
     $cumple = date("d-m-Y");
     ?>
     <div class="input-field col s12 m12">
         <i class="material-icons prefix">
             today
         </i>
-        {!!Form::text('fechaNac',null,['class'=>'datepicker validate',"placeholder"=>"Click para Selecionar Fecha"]) !!}
+        {!!Form::text('fechaNac',null,['class'=>'datepicker validate',"placeholder"=>"Click para Seleccionar Fecha"]) !!}
 
         <label for="fechaNac">
             Fecha Nacimiento:
@@ -80,9 +84,10 @@
         <i class="material-icons prefix">
             today
         </i>
-        {!!Form::text('fechaReg',null ,['class'=>'datepicker validate',"placeholder"=>"Click para Selecionar Fecha"]) !!}
+        {!!Form::text('fechaReg',$hoy ,['class'=>'datepicker validate',"placeholder"=>"Click para Selecionar Fecha"]) !!}
         <label for="fechaReg">
             Fecha Registro:
+            <span class="red-text">*</span>
         </label>
     </div>
 </div>
@@ -90,12 +95,15 @@
     <h6>Ubicacion Laboral:</h6>
     @foreach($camposMisioneros as $camposMisionero)
         @php(
-            $camposIds[$camposMisionero->id]=$camposMisionero->nombre
+            $camposIds[$camposMisionero->id]=$camposMisionero->descripcion
         )
     @endforeach
     <div class="input-field col s12 m12">
         {{Form::select('campoMisiId',$camposIds,null)}}
-        <label>Campo Misionero :</label>
+        <label>
+            Campo Misionero :
+            <span class="red-text">*</span>
+        </label>
     </div>
 
     @foreach($Estados as $estado)
@@ -108,10 +116,11 @@
         <label>Estado :</label>
     </div>
 
-
     <div class="input-field col s12 m12">
         {!!Form::text('cargo',null,['class'=>'validate']) !!}
-        <label>Cargo</label>
+        <label>Cargo
+            <span class="red-text">*</span>
+        </label>
     </div>
 </div>
-{!!Form::submit('Guardar',['class'=>'btn btn-small waves-effect waves-light right','id'=>'cl']) !!}
+{!!Form::submit('Guardar',['class'=>'btn btn-small waves-effect waves-light right']) !!}

@@ -51,7 +51,7 @@ class PdfController extends Controller
         $total = 0.00;
         $donante1 = CE_Donantes::find($idDonante);
         $donacion = CE_Donaciones::find($idDonacion);
-        $ListaAbonos = CE_DetalleDonacion::where('idDonacion', '=', $idDonacion)->orderBy('id', 'ASC')->paginate();
+        $ListaAbonos = CE_DetalleDonacion::where('idDonacion', '=', $idDonacion)->orderBy('id', 'ASC')->paginate(50);
         $Proyecto = CE_Proyecto::find($donacion->idProyecto);
         $CampoMisionero = CE_CampoMisionero::find($donante1->campoMisiId);
         $ListaCamposMisioneros = CE_CampoMisionero::all();

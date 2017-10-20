@@ -69,14 +69,9 @@
 
                         <tr>
                             <td>
-                                @foreach($donante as $donantefila)
-                                    @if ($donantefila->id == $fila->idDonante)
-                                        {{strtoupper( $donantefila -> apellidoPaterno) }} {{strtoupper( $donantefila -> apellidoMaterno )}}
-                                        , {{ ucwords($donantefila -> nombres )}}
-                                    @endif
-
-                                @endforeach
-
+                                @php($donantefila=\App\CE_Donantes::find($fila->idDonante))
+                                {{strtoupper( $donantefila -> apellidoPaterno) }} {{strtoupper( $donantefila -> apellidoMaterno )}}
+                                , {{ ucwords($donantefila -> nombres )}}
 
                             </td>
                             <td>{{ $fila -> codDonacion }}</td>
@@ -84,14 +79,8 @@
                             <td>{{ $fila -> nroCuota }}</td>
                             <td>{{ $fila -> fechaFinal }}</td>
                             <td>
-                                @foreach($listaProyectos as $proyecto)
-                                    @if ($proyecto->id == $fila->idProyecto)
-                                        {{ $proyecto -> nombre }}
-                                    @endif
-
-                                @endforeach
-
-
+                                @php($proyecto=\App\CE_Proyecto::find($fila->idProyecto))
+                                {{$proyecto->nombre}}
                             </td>
                             <td>
                             <!-- <a class="btn-floating  waves-effect waves-light blue tooltipped right" href="{{ route('donantes.show', $donantefila->id) }}" data-position="top" data-delay="50" data-tooltip="ver">

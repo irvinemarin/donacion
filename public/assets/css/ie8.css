@@ -6,14 +6,14 @@
 
 /* Header */
 
-	#header nav a {
+	#header2 nav a {
 		position: relative;
 		border: solid 1px #fff;
 		border-radius: 100%;
 		-ms-behavior: url("assets/js/ie/PIE.htc");
 	}
 
-		#header nav a:before {
+		#header2 nav a:before {
 			border: 0;
 		}
 
