@@ -189,13 +189,28 @@ class ExcelController extends Controller
         if ($request->excel != null) {
             Excel::selectSheets('Donantes')->load($request->excel, function ($reader) {
                 $excel = $reader->get();
+//                dd($reader->get());
+
                 $reader->each(function ($row) {
-                    if ($row != null) {
+                    if ($row->nombres != null) {
                         $donante = new CE_Donantes();
                         $fechaActualf = date("d-m-Y H:i:s");
-                        $añoActual = date("Y", strtotime($fechaActualf));
+                        $añoRegistroExcel = date("d-m-Y H:i:s", strtotime($row->fechareg));
 
-                        $donante->codDonante = $añoActual . $row->dni;
+//                        dd($añoRegistroExcel);
+                        if ($row->fechareg == null) {
+                            $añoRegistro = date("Y", strtotime($fechaActualf));
+                        } else {
+                            $añoRegistro = date("Y", strtotime($añoRegistroExcel));//                            dd($añoRegistro);
+                        }
+
+                        if ($row->codigodonacion == null) {
+                            $donante->codDonante = $añoRegistro . $row->dni;
+                        } else {
+                            $donante->codDonante = $añoRegistro . $row->dni;
+                        }
+
+
                         $donante->nombres = $row->nombres;
                         $donante->apellidoPaterno = $row->apellidopaterno;
                         $donante->apellidoMaterno = $row->apellidomaterno;
@@ -235,11 +250,16 @@ class ExcelController extends Controller
                         }
 
                         $donante->idEstado = $row->estado;
-                        $donante->cargo = $row->cargo;
+                        if ($row->cargo != null) {
+                            $donante->cargo = $row->cargo;
+                        } else {
+                            $donante->cargo = "-";
+                        }
+
                         $donante->campoMisiId = $row->campomisiid;
 
-                        dd($donante);
-//                        $donante->save();
+//                        dd($donante);
+                        $donante->save();
                     }
                 });
             });
