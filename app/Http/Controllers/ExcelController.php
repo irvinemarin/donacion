@@ -43,8 +43,8 @@ class ExcelController extends Controller
                     'fechaReg as Fecha_Registro',
                     'idEstado as Estado',
                     'campoMisiId as Campo_Misionero'
-                )->get();
-
+                )->where('idEstado', '=', 1)->get();
+                dd($ListDonates);
 
                 foreach ($ListDonates as $filaDonante) {
                     foreach ($ListEstados as $filaEstado) {
@@ -77,28 +77,31 @@ class ExcelController extends Controller
 
             });
             $excel->sheet('Donaciones', function ($sheet) {
-                $ListDonantes = CE_Donantes::all();
+                $ListDonantes = CE_Donantes::all()->where('idEstado', '=', 1);
                 $ListProyectos = CE_Proyecto::all();
                 $ListEstados = CEEstados::all();
 //
-                $donaciones = CE_Donaciones::select(
-                    'idDonante as Donante',
-                    'idProyecto as Proyecto',
-                    'codDonacion as Codigo_Donacion',
-                    'cantidad as Cantidad_Promesa',
-                    'nroCuota as Nro_Cuotas',
-                    'abono as Total_Depositado',
-                    'restante as Restante',
-                    'frecuencia as Frecuencia_Deposito',
-                    'fechain as Fecha_Inicio_Promesa',
-                    'fechaFinal as Fecha_Final_Promesa',
-                    'modalidad as Modalidad_Deposito',
-                    'idEstado as Estado_Donacion',
-                    'created_at as Fecha_registro_en_Sistema',
-                    'updated_at as Fecha_ultima_modificación'
-                )->get();
+                foreach ($ListDonantes as $donante)
 
-                foreach ($donaciones as $filaDonacion) {
+
+                    $DonacionFila = CE_Donaciones::select(
+                        'idDonante as Donante',
+                        'idProyecto as Proyecto',
+                        'codDonacion as Codigo_Donacion',
+                        'cantidad as Cantidad_Promesa',
+                        'nroCuota as Nro_Cuotas',
+                        'abono as Total_Depositado',
+                        'restante as Restante',
+                        'frecuencia as Frecuencia_Deposito',
+                        'fechain as Fecha_Inicio_Promesa',
+                        'fechaFinal as Fecha_Final_Promesa',
+                        'modalidad as Modalidad_Deposito',
+                        'idEstado as Estado_Donacion',
+                        'created_at as Fecha_registro_en_Sistema',
+                        'updated_at as Fecha_ultima_modificación'
+                    )->where("idDonante", "=", $donante->id)->get();
+
+                foreach ($DonacionFila as $filaDonacion) {
                     foreach ($ListEstados as $filaEstado) {
                         if ($filaDonacion->Estado_Donacion == $filaEstado->id) {
                             $filaDonacion->Estado_Donacion = $filaEstado->nombre;
@@ -135,13 +138,20 @@ class ExcelController extends Controller
                     $cells->setFontWeight('bold');
 
                 });
-                $sheet->fromArray($donaciones);
+                $sheet->fromArray($DonacionFila);
 
 
             });
             $excel->sheet('Promesas', function ($sheet) {
 
                 $ListProyectos = CE_Proyecto::all();
+
+                $ListDonantes = CE_Donantes::all()->where('idEstado', '=', 1);
+
+                foreach ($ListDonantes as $donante) {
+                    $donaciones = CE_Donaciones::all()->where('idDonante', '=', $donante->id);
+                }
+
 
                 $ListDetalleDonacion = CE_DetalleDonacion::select(
                     'id as Orden_Registro',
@@ -190,7 +200,6 @@ class ExcelController extends Controller
             Excel::selectSheets('Donantes')->load($request->excel, function ($reader) {
                 $excel = $reader->get();
 //                dd($reader->get());
-
                 $reader->each(function ($row) {
                     if ($row->nombres != null) {
                         $donante = new CE_Donantes();
@@ -456,7 +465,7 @@ class ExcelController extends Controller
 
                         $CuotasPromesas->campoMisioneroId = $row->campomis;
 
-                        if ($row->nroVaucher != null) {
+                        if ($row->nrovoucher != null) {
                             $CuotasPromesas->nroVaucher = $row->nrovoucher;
                         } else {
                             $CuotasPromesas->nroVaucher = "-";
